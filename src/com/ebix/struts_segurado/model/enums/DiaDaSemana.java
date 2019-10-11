@@ -2,11 +2,11 @@ package com.ebix.struts_segurado.model.enums;
 
 public enum DiaDaSemana {
 
-	SEGUNDA (1, "Segunda-feira"),
-	TERCA(2, "Terça-feira"),
-	QUARTA(3, "Quarta-feira"),
-	QUINTA(4, "Quinta-feira"),
-	SEXTA(5, "Sexta-feira");
+	SEGUNDA (1, "Segunda"),
+	TERCA(2, "Terça"),
+	QUARTA(3, "Quarta"),
+	QUINTA(4, "Quinta"),
+	SEXTA(5, "Sexta");
 	
 	private int cod;
 	private String descricao;
@@ -35,6 +35,19 @@ public enum DiaDaSemana {
 			}
 		}			
 		throw new IllegalArgumentException("Código inválido: " + cod);
+	}
+	
+	public static DiaDaSemana toEnum(String descricao) {
+		if(descricao == null) {
+			return null;
+		}
+		
+		for(DiaDaSemana dia : DiaDaSemana.values()) {
+			if(descricao.equals(dia.descricao)) {
+				return dia;
+			}
+		}			
+		throw new IllegalArgumentException("Descrição inválida: " + descricao);
 	}
 }
 

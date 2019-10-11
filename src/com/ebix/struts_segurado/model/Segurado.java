@@ -13,7 +13,7 @@ public class Segurado {
 	private String rg;
 	private String sexo;
 	private boolean correntista;
-	private int diasDeVisita;
+	private List<SeguradoDia> diasDeVisita = new ArrayList<>();
 	private Date dataNascimento;
 	private Date dataCadastro;
 	private Date dataAlteracao;
@@ -23,16 +23,17 @@ public class Segurado {
 		
 	}
 
-	public Segurado(String nome, String cpf, boolean correntista, DiaDaSemana dia, Date dataNascimento,
-			Date dataCadastro, Date dataAlteracao) {
+	public Segurado(String nome, String cpf, boolean correntista, Date dataNascimento,
+			Date dataCadastro, Date dataAlteracao, String sexo, String rg) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
-		this.correntista = correntista;
-		this.diasDeVisita = dia.getCod();
+		this.correntista = correntista;		
 		this.dataNascimento = dataNascimento;
 		this.dataCadastro = dataCadastro;
 		this.dataAlteracao = dataAlteracao;
+		this.sexo = sexo;
+		this.rg = rg;
 	}
 	
 	
@@ -61,13 +62,6 @@ public class Segurado {
 		this.correntista = correntista;
 	}
 
-	public int getDiasDeVisita() {
-		return diasDeVisita;
-	}
-
-	public void setDiasDeVisita(DiaDaSemana dia) {
-		this.diasDeVisita = dia.getCod();
-	}
 
 	public Date getDataNascimento() {
 		return dataNascimento;
@@ -110,6 +104,22 @@ public class Segurado {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	
+	public List<SeguradoSeguro> getSeguros() {
+		return seguros;
+	}
+
+	public void setSeguros(List<SeguradoSeguro> seguros) {
+		this.seguros = seguros;
+	}
+
+	public List<SeguradoDia> getDiasDeVisita() {
+		return diasDeVisita;
+	}
+
+	public void setDiasDeVisita(List<SeguradoDia> diasDeVisita) {
+		this.diasDeVisita = diasDeVisita;
+	}
 
 	@Override
 	public int hashCode() {
@@ -136,13 +146,14 @@ public class Segurado {
 		return true;
 	}
 
-	public List<SeguradoSeguro> getSeguros() {
-		return seguros;
+	@Override
+	public String toString() {
+		return "Segurado [nome = " + nome + ", cpf = " + cpf + ", rg = " + rg + ", sexo= " + sexo + ", correntista = "
+				+ correntista + ", diasDeVisita = " + diasDeVisita + ", dataNascimento = " + dataNascimento
+				+ ", dataCadastro = " + dataCadastro + ", dataAlteracao = " + dataAlteracao + ", seguros = " + seguros + "]";
 	}
 
-	public void setSeguros(List<SeguradoSeguro> seguros) {
-		this.seguros = seguros;
-	}
+
 	
 	
 	

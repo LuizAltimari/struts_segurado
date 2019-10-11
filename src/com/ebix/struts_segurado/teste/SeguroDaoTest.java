@@ -54,6 +54,7 @@ public class SeguroDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void alterar() {
 		SeguroDAO dao = new SeguroDAO();
 		Seguro seg = dao.selecionar(2);

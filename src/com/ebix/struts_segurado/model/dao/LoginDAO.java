@@ -27,7 +27,7 @@ public class LoginDAO {
 			
 			rs = stmt.executeQuery(sql);
 			
-			if(rs != null) {
+			if(rs.next()) {
 				return true;
 			}
 			else {
