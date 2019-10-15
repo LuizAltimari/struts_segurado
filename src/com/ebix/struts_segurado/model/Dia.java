@@ -1,6 +1,6 @@
 package com.ebix.struts_segurado.model;
 
-import java.util.List;
+
 
 public class Dia {
 	
@@ -33,6 +33,13 @@ public class Dia {
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
+
+	@Override
+	public String toString() {
+		return "Dia [id = " + id + ", dia = " + dia + "]";
+	}
+	
+	
 	
 	
 

@@ -30,6 +30,13 @@ public class SeguradoSeguro {
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
 	}
+
+	@Override
+	public String toString() {
+		return "SeguradoSeguro [segurado=" + segurado + ", seguro=" + seguro + "]";
+	}
+	
+	
 	
 	
 

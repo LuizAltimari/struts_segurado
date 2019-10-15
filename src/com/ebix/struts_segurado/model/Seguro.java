@@ -1,14 +1,10 @@
 package com.ebix.struts_segurado.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Seguro {
 
 	private int id;
 	private String seguro;
-	private double valor;
-	private List<SeguradoSeguro> segurados = new ArrayList<>();
+	private double valor;	
 	
 	public Seguro() {
 		
@@ -52,14 +48,7 @@ public class Seguro {
 		this.seguro = seguro;
 	}
 
-	public List<SeguradoSeguro> getSegurados() {
-		return segurados;
-	}
-
-	public void setSegurados(List<SeguradoSeguro> segurados) {
-		this.segurados = segurados;
-	}
-
+	
 	
 	@Override
 	public int hashCode() {
@@ -85,7 +74,7 @@ public class Seguro {
 
 	@Override
 	public String toString() {
-		return "Seguro [id = " + id + ", seguro = " + seguro + ", valor = " + valor + ", segurados = " + segurados + "]";
+		return "Seguro [id = " + id + ", seguro = " + seguro + ", valor = " + valor + "]";
 	}
 	
 	

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ebix.struts_segurado.model.enums.DiaDaSemana;
 
 public class Segurado {
 	
@@ -13,11 +12,11 @@ public class Segurado {
 	private String rg;
 	private String sexo;
 	private boolean correntista;
-	private List<SeguradoDia> diasDeVisita = new ArrayList<>();
+	private List<Dia> diasDeVisita = new ArrayList<>();
 	private Date dataNascimento;
 	private Date dataCadastro;
 	private Date dataAlteracao;
-	private List<SeguradoSeguro> seguros = new ArrayList<>();
+	private List<Seguro> seguros = new ArrayList<>();
 	
 	public Segurado() {
 		
@@ -105,19 +104,19 @@ public class Segurado {
 		this.sexo = sexo;
 	}
 	
-	public List<SeguradoSeguro> getSeguros() {
+	public List<Seguro> getSeguros() {
 		return seguros;
 	}
 
-	public void setSeguros(List<SeguradoSeguro> seguros) {
+	public void setSeguros(List<Seguro> seguros) {
 		this.seguros = seguros;
 	}
 
-	public List<SeguradoDia> getDiasDeVisita() {
+	public List<Dia> getDiasDeVisita() {
 		return diasDeVisita;
 	}
 
-	public void setDiasDeVisita(List<SeguradoDia> diasDeVisita) {
+	public void setDiasDeVisita(List<Dia> diasDeVisita) {
 		this.diasDeVisita = diasDeVisita;
 	}
 

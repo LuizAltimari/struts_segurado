@@ -15,14 +15,15 @@ public class SeguroDAO extends ConnectionFactory {
 	
 	public List<Seguro> listar(){
 		Connection conn = getConnection();
-		List<Seguro> seguros = new ArrayList<>();
+		List<Seguro> seguros = new ArrayList<>();		
 		try {
 			String sql = "select * from seguro;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				seguros.add(new Seguro(rs.getInt("id") , rs.getString("seguro"), rs.getDouble("valor")));
+				Seguro seg = new Seguro(rs.getInt("id") , rs.getString("seguro"), rs.getDouble("valor"));				
+				seguros.add(seg);
 			}
 			return seguros;
 		} catch(SQLException e) {
@@ -36,7 +37,7 @@ public class SeguroDAO extends ConnectionFactory {
 	
 	public Seguro selecionar(int id) {
 		Seguro seguro = null;
-		Connection conn = getConnection();
+		Connection conn = getConnection();		
 		try {
 			String sql = "select * from seguro where id = " + id + ";";
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -45,9 +46,10 @@ public class SeguroDAO extends ConnectionFactory {
 			
 			if(rs != null && rs.next()) {
 				seguro = new Seguro(rs.getInt("id") , rs.getString("seguro"), rs.getDouble("valor"));
+				
 			}
 						
-			return seguro;
+			return seguro; 
 			
 		} catch (SQLException e) {
 			System.out.println("Execption: " + e.getMessage());

@@ -13,7 +13,7 @@ public class SeguroDaoTest {
 	@Test
 	@Ignore
 	public void salvar() {
-		Seguro seg = new Seguro("Seguro de vida", 400.0);
+		Seguro seg = new Seguro("Seguro de Imóvel", 1000.0);
 		SeguroDAO dao = new SeguroDAO();
 		if(dao.salvar(seg)) {
 			System.out.println("Salvou");
@@ -33,10 +33,9 @@ public class SeguroDaoTest {
 	}
 	
 	@Test
-	@Ignore
 	public void selecionar() {
 		SeguroDAO dao = new SeguroDAO();
-		Seguro seg = dao.selecionar(1);
+		Seguro seg = dao.selecionar(2);
 		System.out.println(seg.toString());
 	}
 	

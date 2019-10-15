@@ -9,8 +9,13 @@
 	<constant name="struts.custom.i18n.resources"
 		value="ApplicationResources" />
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="login" class="com.ebix.struts_segurado.action.LoginAction">
-			<result name="success">index.jsp</result>
+
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="login"
+			class="com.ebix.struts_segurado.action.LoginAction">
+			<result name="success" type="tiles">/index.tiles</result>
 			<result name="error">Login.jsp</result>
 		</action>
 	</package>

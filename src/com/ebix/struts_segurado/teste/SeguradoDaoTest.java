@@ -8,9 +8,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.ebix.struts_segurado.model.Segurado;
-import com.ebix.struts_segurado.model.Seguro;
 import com.ebix.struts_segurado.model.dao.SeguradoDAO;
-import com.ebix.struts_segurado.model.dao.SeguroDAO;
+
 
 public class SeguradoDaoTest {
 
@@ -63,6 +62,7 @@ public class SeguradoDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void deletar() {
 		SeguradoDAO dao = new SeguradoDAO();
 		

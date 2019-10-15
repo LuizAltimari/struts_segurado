@@ -1,7 +1,7 @@
 package com.ebix.struts_segurado.model.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,22 +11,26 @@ import java.util.List;
 
 import com.ebix.struts_segurado.conexao.ConnectionFactory;
 import com.ebix.struts_segurado.model.Segurado;
-import com.ebix.struts_segurado.model.enums.DiaDaSemana;
 
 public class SeguradoDAO extends ConnectionFactory {
 
 	public List<Segurado> listar() {
 		Connection conn = getConnection();
 		List<Segurado> segurados = new ArrayList<>();
+		SeguradoDiaDAO sdDao = new SeguradoDiaDAO();
+		SeguradoSeguroDAO ssDao = new SeguradoSeguroDAO();
 		try {
 			String sql = "select * from segurado;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				segurados.add(new Segurado(rs.getString("nome"), rs.getString("cpf"), rs.getBoolean("correntista"),
+				Segurado seg = new Segurado(rs.getString("nome"), rs.getString("cpf"), rs.getBoolean("correntista"),
 						rs.getDate("dataNascimento"), rs.getDate("dataCadastro"), rs.getDate("dataAlteracao"),
-						rs.getString("sexo"), rs.getString("rg")));
+						rs.getString("sexo"), rs.getString("rg"));
+				seg.setSeguros(ssDao.listarPorCpf(seg.getCpf()));
+				seg.setDiasDeVisita(sdDao.listarPorCpf(seg.getCpf()));
+				segurados.add(seg);
 			}
 			return segurados;
 		} catch (SQLException e) {
@@ -40,6 +44,8 @@ public class SeguradoDAO extends ConnectionFactory {
 
 	public Segurado selecionar(String cpf) {
 		Segurado segurado = null;
+		SeguradoDiaDAO sdDao = new SeguradoDiaDAO();
+		SeguradoSeguroDAO ssDao = new SeguradoSeguroDAO();
 		Connection conn = getConnection();
 		try {
 			String sql = "select * from segurado where cpf = '" + cpf + "';";
@@ -51,6 +57,8 @@ public class SeguradoDAO extends ConnectionFactory {
 				segurado = new Segurado(rs.getString("nome"), rs.getString("cpf"), rs.getBoolean("correntista"),
 						rs.getDate("dataNascimento"), rs.getDate("dataCadastro"), rs.getDate("dataAlteracao"),
 						rs.getString("sexo"), rs.getString("rg"));
+				segurado.setDiasDeVisita(sdDao.listarPorCpf(cpf));
+				segurado.setSeguros(ssDao.listarPorCpf(cpf));
 			}
 
 			return segurado;
@@ -79,6 +87,8 @@ public class SeguradoDAO extends ConnectionFactory {
 			stmt.setString(6, sdf.format(segurado.getDataAlteracao()));
 			stmt.setString(7, segurado.getSexo());
 			stmt.setString(8, segurado.getRg());
+			
+			
 
 			stmt.executeUpdate();
 			return true;

@@ -26,6 +26,11 @@ public class SeguradoDia {
 	public void setDia(Dia dia) {
 		this.dia = dia;
 	}
+
+	@Override
+	public String toString() {
+		return "SeguradoDia [segurado=" + segurado.toString() + ", dia=" + dia + "]";
+	}
 	
 	
 
