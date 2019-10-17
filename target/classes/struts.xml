@@ -18,5 +18,41 @@
 			<result name="success" type="tiles">/index.tiles</result>
 			<result name="error">Login.jsp</result>
 		</action>
+		
+		<action name="menu-seguro">
+			<result type="tiles">/seguroMenu.tiles</result>
+		</action>
+		
+		<action name = "lista-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="listar">
+			<result name = "success" type="tiles">/listaSeguro.tiles</result>
+		</action>
+		
+		<action name = "deleta-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="deletar">
+			<result name = "success" type="chain">lista-seguro</result>
+		</action>
+		
+		<action name = "cadastra-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="cadastrar">
+			<result type="tiles">/cadastraSeguro.tiles</result>
+			<result name = "success" type="chain">lista-seguro</result>
+			<result name = "error" type="tiles">/cadastraSeguro.tiles</result>
+		</action>
+		
+		<action name = "cadastra-seguro-tiles" >
+			<result type="tiles">/cadastraSeguro.tiles</result>			
+		</action>
+		
+		
+		<action name = "altera-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="alterar">			
+			<result name = "success" type="chain">lista-seguro</result>
+			<result name = "input" type="tiles">/alteraSeguro.tiles</result>
+		</action>
+		
+		
+		
+		<action name = "carrega-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="carregar">
+			<result name = "success" type="tiles">/alteraSeguro.tiles</result>
+			<result name = "error" type="redirectAction">lista-seguro</result>
+		</action>
+		
 	</package>
 </struts>

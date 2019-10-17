@@ -15,7 +15,7 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
-	<div class="container-fluid" align="center">
+	<div class="container-fluid">
 
 
 		<div class="row">
@@ -26,10 +26,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xl-3" align="left">
+			<div class="col-lg-1" align="center">
 				<tiles:insertAttribute name="menu" />
 			</div>
-			<div class="col" align="center">
+			<div class="col-lg-11" >
 				<tiles:insertAttribute name="body" />
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 <title>Bem Vindo</title>
 </head>
 <body>
-	<h2>
+	<h2 style="margin-left: 20px;">
 		Seja bem vindo,
 		<s:property value="usuario" />
 		...!

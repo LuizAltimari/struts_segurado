@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ebix.struts_segurado.conexao.ConnectionFactory;
+import com.ebix.struts_segurado.model.SeguradoSeguro;
 import com.ebix.struts_segurado.model.Seguro;
 
 public class SeguroDAO extends ConnectionFactory {
@@ -95,9 +96,11 @@ public class SeguroDAO extends ConnectionFactory {
 	
 	public boolean deletar(int id) {
 		Connection conn = getConnection();
+		SeguradoSeguroDAO ssDao = new SeguradoSeguroDAO();
 		try {
 			String sql = "delete from seguro where id = " + id + ";";
-			PreparedStatement stmt = conn.prepareStatement(sql); 						
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ssDao.deletarPorSeguro(id);
 			stmt.executeUpdate();
 			return true;
 		}catch(SQLException e) {
