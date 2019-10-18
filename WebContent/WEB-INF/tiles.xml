@@ -28,5 +28,15 @@
 		<put-attribute name="body" value="/AlteraSeguro.jsp" />
 		<put-attribute name="title" value="Alterar Seguro" />
 	</definition>
+	
+	<definition name="/listaSegurado.tiles" extends="baseLayout">
+		<put-attribute name="body" value="/ListaSegurado.jsp" />
+		<put-attribute name="title" value="Listar Segurado" />
+	</definition>
+	
+	<definition name="/cadastraSegurado.tiles" extends="baseLayout">
+		<put-attribute name="body" value="/CadastraSegurado.jsp" />
+		<put-attribute name="title" value="Cadastrar Segurado" />
+	</definition>
 
 </tiles-definitions>

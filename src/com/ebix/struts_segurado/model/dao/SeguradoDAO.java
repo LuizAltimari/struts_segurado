@@ -122,9 +122,13 @@ public class SeguradoDAO extends ConnectionFactory {
 
 	public boolean deletar(String cpf) {
 		Connection conn = getConnection();
+		SeguradoDiaDAO sdDao = new SeguradoDiaDAO();
+		SeguradoSeguroDAO ssDao = new SeguradoSeguroDAO();
 		try {
 			String sql = "delete from segurado where cpf = '" + cpf + "';";
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			sdDao.deletarPorSegurado(cpf);
+			ssDao.deletarPorSegurado(cpf);
 			stmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {

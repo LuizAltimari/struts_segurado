@@ -46,13 +46,35 @@
 			<result name = "success" type="chain">lista-seguro</result>
 			<result name = "input" type="tiles">/alteraSeguro.tiles</result>
 		</action>
-		
-		
+				
 		
 		<action name = "carrega-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="carregar">
 			<result name = "success" type="tiles">/alteraSeguro.tiles</result>
 			<result name = "error" type="chain">lista-seguro</result>
 		</action>
+		
+		<action name = "lista-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="listar">
+			<result name = "success" type="tiles">/listaSegurado.tiles</result>
+		</action>
+		
+		<action name = "cadastra-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="cadastrar">
+			<result type="tiles">/cadastraSegurado.tiles</result>
+			<result name = "success" type="chain">lista-segurado</result>
+			<result name = "error" type="tiles">/cadastraSegurado.tiles</result>
+		</action>
+		
+		<action name = "cadastra-segurado-tiles" >
+			<result type="chain">carregar-seguros</result>			
+		</action>
+		
+		<action name = "carregar-seguros" class = "com.ebix.struts_segurado.action.SeguradoAction"  method="carregarSeguros">
+			<result name="success" type="tiles">/cadastraSegurado.tiles</result>			
+		</action>
+		
+		<action name = "deleta-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="deletar">
+			<result name = "success" type="chain">lista-segurado</result>
+		</action>
+		
 		
 	</package>
 </struts>

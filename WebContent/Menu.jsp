@@ -8,15 +8,22 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-				<li><a href="#">Segurado</a></li>
 				<li>
-				
-				<a class="btn btn-link" data-toggle="collapse" href="#seguro" role="button" aria-expanded="false" aria-controls="seguro">Seguro</a>
-				<div class="collapse" id = "seguro">
-					<s:a href="lista-seguro">Listar</s:a>
-					<s:a href="cadastra-seguro-tiles">Cadastrar</s:a>					
-				</div>				
-				</li>
+				<a class="btn btn-link" data-toggle="collapse"
+					href="#segurado" role="button" aria-expanded="false"
+					aria-controls="segurado">Segurado</a>
+					<div class="collapse" id="segurado">
+						<s:a href="lista-segurado">Listar</s:a>						
+						<s:a href="cadastra-segurado-tiles">Cadastrar</s:a>
+					</div>
+					</li>
+				<li><a class="btn btn-link" data-toggle="collapse"
+					href="#seguro" role="button" aria-expanded="false"
+					aria-controls="seguro">Seguro</a>
+					<div class="collapse" id="seguro">
+						<s:a href="lista-seguro">Listar</s:a>
+						<s:a href="cadastra-seguro-tiles">Cadastrar</s:a>
+					</div></li>
 			</ul>
 		</div>
 	</div>
