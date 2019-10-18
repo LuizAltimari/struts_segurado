@@ -51,7 +51,7 @@
 		
 		<action name = "carrega-seguro" class = "com.ebix.struts_segurado.action.SeguroAction" method="carregar">
 			<result name = "success" type="tiles">/alteraSeguro.tiles</result>
-			<result name = "error" type="redirectAction">lista-seguro</result>
+			<result name = "error" type="chain">lista-seguro</result>
 		</action>
 		
 	</package>

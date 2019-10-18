@@ -12,7 +12,7 @@ public class SeguroAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private List<Seguro> lista = new ArrayList<>();
-	private Integer id;
+	private int id;
 	private String seguro;
 	private double valor;
 	private Seguro seg;
@@ -53,12 +53,12 @@ public class SeguroAction extends ActionSupport {
 		}
 
 	}
-
+// Créditos para Danilo Polastri, o brabo: https://github.com/DaniloPolastri
 	public String alterar() {
 		SeguroDAO dao = new SeguroDAO();
 
-		try {
-			this.setSeg(dao.selecionar(id));
+		try {			
+			this.seg = dao.selecionar(id);
 			if (this.seg != null) {
 				this.seg = new Seguro(id, seguro, valor);
 				dao.alterar(this.seg);
@@ -95,11 +95,11 @@ public class SeguroAction extends ActionSupport {
 		this.lista = lista;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

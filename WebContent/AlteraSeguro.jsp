@@ -9,12 +9,12 @@
 </head>
 <body>
 	<s:form action ="altera-seguro">
-		<div><h5>ID: <s:property value="id"></s:property></h5></div>
+		
 		<s:textfield cssClass="form-control" name="seguro" size="20"
 			placeholder="Nome do Seguro" label="Seguro" />
 		<s:textfield cssClass="form-control" name="valor" size="20"
 			placeholder="Valor do Seguro" label="Valor(R$)" />
-		<s:hidden name="id" value="id"></s:hidden>
+		<s:hidden name="id" value="%{id}"></s:hidden>
 		<div class="form-group">
 			
 			<s:submit cssClass="btn btn-primary btn-block"
