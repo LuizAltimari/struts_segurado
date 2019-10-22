@@ -24,6 +24,7 @@ public class SeguradoAction {
 	private Date dataAlteracao;
 	private List<Dia> diasDeVisita = new ArrayList<>();
 	private List<Seguro> seguros = new ArrayList<>();
+	private List<Seguro> listaSeguros = new ArrayList<>();
 
 	public String listar() {
 		SeguradoDAO dao = new SeguradoDAO();
@@ -60,10 +61,51 @@ public class SeguradoAction {
 		}
 	}
 	
+	public String carregar() {
+		SeguradoDAO dao = new SeguradoDAO();
+		try {
+			this.segurado = dao.selecionar(cpf);
+			this.correntista = segurado.isCorrentista();
+			this.dataAlteracao = segurado.getDataAlteracao();
+			this.dataCadastro = segurado.getDataCadastro();
+			this.dataNascimento = segurado.getDataNascimento();
+			this.diasDeVisita = segurado.getDiasDeVisita();
+			this.nome = segurado.getNome();
+			this.rg = segurado.getRg();
+			this.seguros = segurado.getSeguros();
+			
+			return "success";
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return "error";
+		}
+
+	}
+	
+	public String alterar() {		
+		SeguradoDAO dao = new SeguradoDAO();
+
+		try {			
+			this.segurado = dao.selecionar(cpf);
+			if (this.segurado != null) {
+				this.segurado = new Segurado(nome, cpf, correntista, dataNascimento, dataCadastro, dataAlteracao, sexo, rg);
+				dao.alterar(this.segurado);
+				return "success";
+			}
+
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return "error";
+		}
+		
+		return "input";
+	
+	}
+	
 	public String carregarSeguros(){
 		SeguroDAO dao = new SeguroDAO();
 		
-		this.seguros = dao.listar();
+		this.setListaSeguros(dao.listar());
 		return "success";
 	}
 
@@ -161,6 +203,14 @@ public class SeguradoAction {
 
 	public void setSeguros(List<Seguro> seguros) {
 		this.seguros = seguros;
+	}
+
+	public List<Seguro> getListaSeguros() {
+		return listaSeguros;
+	}
+
+	public void setListaSeguros(List<Seguro> listaSeguros) {
+		this.listaSeguros = listaSeguros;
 	}
 
 }

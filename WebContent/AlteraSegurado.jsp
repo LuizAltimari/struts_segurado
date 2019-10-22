@@ -37,7 +37,7 @@
 		<div class="form-group">
 
 			<s:submit cssClass="btn btn-primary btn-block" label="Gravar"
-				align="center" method="cadastrar" />
+				align="center" method="alterar" />
 		</div>
 	</s:form>
 		

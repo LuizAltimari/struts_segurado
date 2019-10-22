@@ -1,10 +1,11 @@
 package com.ebix.struts_segurado.model.dao;
 
 import java.sql.Connection;
-
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +83,9 @@ public class SeguradoDAO extends ConnectionFactory {
 			stmt.setString(2, segurado.getCpf());
 			stmt.setBoolean(3, segurado.isCorrentista());
 
-			stmt.setString(4, sdf.format(segurado.getDataNascimento()));
-			stmt.setString(5, sdf.format(segurado.getDataCadastro()));
-			stmt.setString(6, sdf.format(segurado.getDataAlteracao()));
+			stmt.setString(4, sdf.format (new Timestamp(segurado.getDataNascimento().getTime())));
+			stmt.setString(5, sdf.format (new Timestamp(new java.util.Date().getTime())));
+			stmt.setString(6, sdf.format (new Timestamp(new java.util.Date().getTime())));
 			stmt.setString(7, segurado.getSexo());
 			stmt.setString(8, segurado.getRg());
 			
@@ -104,10 +105,9 @@ public class SeguradoDAO extends ConnectionFactory {
 		Connection conn = getConnection();
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			String sql = "update segurado set nome = '" + seg.getNome() + "', cpf = '" + seg.getCpf() + "', "
+			String sql = "update segurado set nome = '" + seg.getNome()  + "', "
 					+ "correntista = " + seg.isCorrentista() + ", " + "dataNascimento = '" + sdf.format(seg.getDataNascimento())
-					+ "', dataCadastro = '" + sdf.format(seg.getDataCadastro())  + "', " + "dataAlteracao = '"
-					+ sdf.format(seg.getDataAlteracao()) + "', sexo = '" + seg.getSexo() + "'," + "rg = '" + seg.getRg() + "';";
+					+ "', sexo = '" + seg.getSexo() + "'," + "rg = '" + seg.getRg() + "' where cpf = '"+ seg.getCpf() + "';";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.executeUpdate();

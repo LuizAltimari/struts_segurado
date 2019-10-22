@@ -67,14 +67,28 @@
 			<result type="chain">carregar-seguros</result>			
 		</action>
 		
+		<action name = "altera-segurado-tiles" class = "com.ebix.struts_segurado.action.SeguradoAction"  method="carregarSeguros">
+			<result name="success" type="chain">carrega-segurado</result>						
+		</action>
+		
+		<action name = "carrega-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="carregar">
+			<result name = "success" type="tiles">/alteraSegurado.tiles</result>
+			<result name = "error" type="chain">lista-segurado</result>
+		</action>
+		
+		<action name = "altera-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="altera">
+			<result type="tiles">/alteraSegurado.tiles</result>
+			<result name = "success" type="chain">lista-segurado</result>
+			<result name = "error" type="tiles">/alteraSegurado.tiles</result>
+		</action>
+		
 		<action name = "carregar-seguros" class = "com.ebix.struts_segurado.action.SeguradoAction"  method="carregarSeguros">
 			<result name="success" type="tiles">/cadastraSegurado.tiles</result>			
 		</action>
-		
 		<action name = "deleta-segurado" class = "com.ebix.struts_segurado.action.SeguradoAction" method="deletar">
 			<result name = "success" type="chain">lista-segurado</result>
 		</action>
-		
+
 		
 	</package>
 </struts>

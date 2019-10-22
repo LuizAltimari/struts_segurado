@@ -37,16 +37,16 @@
 				<td><s:property value="rg"></s:property></td>
 				<td><s:property value="sexo"></s:property></td>
 				<td><s:property value="correntista"></s:property></td>
-				<td><s:property value="dataNascimento"></s:property></td>
-				<td><s:property value="dataCadastro"></s:property></td>
-				<td><s:property value="dataAlteracao"></s:property></td>
+				<td><s:date name="dataNascimento" format="dd/MM/yyyy"/></td>
+				<td><s:date name="dataCadastro" format="dd/MM/yyyy"/></td>
+				<td><s:date name="dataAlteracao" format="dd/MM/yyyy"/></td>
 
 				<s:url action="deleta-segurado" var="del">
 					<s:param name="cpf" value="cpf"></s:param>
 				</s:url>
 								
-				<s:url action="carrega-segurado" var="alt">
-					<s:param name="id" value="id"></s:param>
+				<s:url action="altera-segurado-tiles" var="alt">
+					<s:param name="cpf" value="cpf"></s:param>
 				</s:url>
 				
 				<td>
