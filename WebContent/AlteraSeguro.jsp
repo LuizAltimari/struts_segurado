@@ -8,7 +8,9 @@
 
 </head>
 <body>
-	<s:form action ="altera-seguro">
+	<h5 align="center">Alteração de Seguro</h5>
+	<div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 25px;">
+		<s:form action ="altera-seguro">
 		
 		<s:textfield cssClass="form-control" name="seguro" size="20"
 			placeholder="Nome do Seguro" label="Seguro" />
@@ -21,5 +23,6 @@
 				label="Gravar" align="center"/>
 		</div>
 	</s:form>
+	</div>	
 </body>
 </html>

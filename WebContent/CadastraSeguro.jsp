@@ -8,7 +8,8 @@
 
 </head>
 <body>
-	<div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 100px;">
+	<h5 align="center">Cadastro de Seguro</h5>
+	<div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 25px;">
 		<s:form action ="cadastra-seguro">
 		<s:textfield cssClass="form-control" name="seguro" size="20"
 			placeholder="Nome do Seguro" label="Seguro" />

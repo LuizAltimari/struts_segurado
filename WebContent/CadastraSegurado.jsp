@@ -9,7 +9,7 @@
 <body>
 	<h5 align="center">Cadastro de Segurado</h5>
 
-	<div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 100px;">
+	<div style="height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 50px;">
 		<s:form action="cadastra-segurado">
 		<s:textfield cssClass="form-control" name="nome" size="20"
 			placeholder="Nome do Segurado" label="Nome" />
