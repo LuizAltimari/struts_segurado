@@ -24,7 +24,7 @@
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 
 		<global-results>
 			<result name="login" type="redirect">home</result>
@@ -116,7 +116,7 @@
 
 		<action name="altera-segurado"
 			class="com.ebix.struts_segurado.action.SeguradoAction"
-			method="altera">
+			method="altera">			
 			<result type="tiles">/alteraSegurado.tiles</result>
 			<result name="success" type="chain">lista-segurado</result>
 			<result name="error" type="tiles">/alteraSegurado.tiles</result>
@@ -124,12 +124,12 @@
 
 		<action name="carregar-seguros"
 			class="com.ebix.struts_segurado.action.SeguradoAction"
-			method="carregarSeguros">
+			method="carregarSeguros">			
 			<result name="success" type="tiles">/cadastraSegurado.tiles</result>
 		</action>
 		<action name="deleta-segurado"
 			class="com.ebix.struts_segurado.action.SeguradoAction"
-			method="deletar">
+			method="deletar">			
 			<result name="success" type="chain">lista-segurado</result>
 		</action>
 

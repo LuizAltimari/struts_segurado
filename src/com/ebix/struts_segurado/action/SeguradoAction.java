@@ -9,9 +9,11 @@ import com.ebix.struts_segurado.model.Segurado;
 import com.ebix.struts_segurado.model.Seguro;
 import com.ebix.struts_segurado.model.dao.SeguradoDAO;
 import com.ebix.struts_segurado.model.dao.SeguroDAO;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class SeguradoAction {
+public class SeguradoAction extends ActionSupport {
 
+	private static final long serialVersionUID = 1L;
 	private List<Segurado> lista = new ArrayList<>();
 	private Segurado segurado;
 	private String nome;
