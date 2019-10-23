@@ -8,27 +8,38 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources"
 		value="ApplicationResources" />
+
 	<package name="default" extends="struts-default" namespace="/">
 
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
+
 		<interceptors>
-			<interceptor name="mylogging"
-				class="com.ebix.struts_segurado.interceptors.MyLoggingInterceptor">
-			</interceptor>
-			<interceptor-stack name="loggingStack">
-				<interceptor-ref name="mylogging" />
-				<interceptor-ref name="defaultStack" />
+			<interceptor name="authentication"
+				class="com.ebix.struts_segurado.interceptors.AuthenticationInterceptor"></interceptor>
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		
-		<default-interceptor-ref name="loggingStack"></default-interceptor-ref>
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">home</result>
+		</global-results>
+
+		<action name="home">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result type="chain">login</result>
+		</action>
+
 		<action name="login"
-			class="com.ebix.struts_segurado.action.LoginAction">			
+			class="com.ebix.struts_segurado.action.LoginAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">/index.tiles</result>
-			<result name="error">Login.jsp</result>
+			<result name="input">Login.jsp</result>
 		</action>
 
 		<action name="menu-seguro">

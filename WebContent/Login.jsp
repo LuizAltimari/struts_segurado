@@ -31,13 +31,13 @@
 						<s:form action="login.action" method="post">
 
 							<div class="form-group" align="center">
-								<s:textfield cssClass="form-control" name="usuario" size="20"
+								<s:textfield cssClass="form-control" name="login.usuario" size="20"
 									placeholder="Usuário" key="label.usuario" />
 							</div>
 							<!-- form-group// -->
 
 							<div class="form-group" align="center">
-								<s:password name="senha" cssClass="form-control" size="20"
+								<s:password name="login.senha" cssClass="form-control" size="20"
 									placeholder="Senha" key="label.senha" />
 							</div>
 							<!-- form-group// -->

@@ -1,31 +1,40 @@
 package com.ebix.struts_segurado.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.ebix.struts_segurado.model.Login;
 import com.ebix.struts_segurado.model.dao.LoginDAO;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware, ModelDriven<Login>{
 	
 	private static final long serialVersionUID = 1L;
 
 	private String usuario;
-	
 	private String senha;
+	private Login login = new Login();
+	private Map<String, Object> sessionAttributes = null;
+
 	
 	public String execute() {
-		
-		Login login = new Login(this.usuario, this.senha);
+				
 		
 		LoginDAO dao = new LoginDAO();
 		
 		if(dao.loginExiste(login)) {
-			
+			sessionAttributes.put("USER", login);
 			return "success";
 		}
 		else {
 			addActionError(getText("error.login"));
-			return "error";
+			return "input";
 		}
+		
+		
+				
 	}
 
 	public String getUsuario() {
@@ -43,7 +52,26 @@ public class LoginAction extends ActionSupport {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
 
+	@Override
+	public Login getModel() {
+		return login;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> sessionAttributes) {
+		this.sessionAttributes = sessionAttributes;
+		
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+	
+ 
 	
 }
