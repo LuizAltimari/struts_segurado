@@ -36,7 +36,7 @@ public class Dia {
 
 	@Override
 	public String toString() {
-		return "Dia [id = " + id + ", dia = " + dia + "]";
+		return dia;
 	}
 	
 	

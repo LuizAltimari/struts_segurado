@@ -7,6 +7,7 @@ import java.util.List;
 import com.ebix.struts_segurado.model.Dia;
 import com.ebix.struts_segurado.model.Segurado;
 import com.ebix.struts_segurado.model.Seguro;
+import com.ebix.struts_segurado.model.dao.DiaDAO;
 import com.ebix.struts_segurado.model.dao.SeguradoDAO;
 import com.ebix.struts_segurado.model.dao.SeguroDAO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,6 +26,7 @@ public class SeguradoAction extends ActionSupport {
 	private Date dataCadastro;
 	private Date dataAlteracao;
 	private List<Dia> diasDeVisita = new ArrayList<>();
+	private List<Dia> dias = new ArrayList<>();
 	private List<Seguro> seguros = new ArrayList<>();
 	private List<Seguro> listaSeguros = new ArrayList<>();
 
@@ -106,8 +108,9 @@ public class SeguradoAction extends ActionSupport {
 	
 	public String carregarSeguros(){
 		SeguroDAO dao = new SeguroDAO();
-		
+		DiaDAO ddao = new DiaDAO();
 		this.setListaSeguros(dao.listar());
+		this.setDias(ddao.listar());
 		return "success";
 	}
 
@@ -213,6 +216,14 @@ public class SeguradoAction extends ActionSupport {
 
 	public void setListaSeguros(List<Seguro> listaSeguros) {
 		this.listaSeguros = listaSeguros;
+	}
+
+	public List<Dia> getDias() {
+		return dias;
+	}
+
+	public void setDias(List<Dia> dias) {
+		this.dias = dias;
 	}
 
 }

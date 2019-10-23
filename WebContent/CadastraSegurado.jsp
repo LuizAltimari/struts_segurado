@@ -33,6 +33,9 @@
 
 		<s:checkboxlist list="listaSeguros" label="Seguros" name="">
 		</s:checkboxlist>
+		
+		<s:checkboxlist list="dias" label="Dias de Visita" name="">
+		</s:checkboxlist>
 
 		<div class="form-group">
 
